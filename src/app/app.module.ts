@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
