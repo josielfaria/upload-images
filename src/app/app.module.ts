@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,19 +10,22 @@ import { AppComponent } from './app.component';
 import { ChangeIconDialog } from './components/change-icon/change-icon.dialog';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { UploadImagePageComponent } from './pages/upload-image-page/upload-image-page.component';
 import { IconNamesPipe } from './shared/pipes/icon-names.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent,
-    NotFoundPageComponent,
+    IconNamesPipe,
     ChangeIconDialog,
-    IconNamesPipe
+    NotFoundPageComponent,
+    HomePageComponent,
+    UploadImagePageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
     AngularMaterialModule,
