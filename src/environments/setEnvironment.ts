@@ -27,7 +27,6 @@ if (!existsSync(envDirectory)) {
 writeFileUsingFS('./src/environments/environment.prod.ts', '');
 writeFileUsingFS('./src/environments/environment.ts', '');
 
-
 // Checks whether command line argument of `prod` was provided signifying production mode
 const isProduction = environment === 'prod';
 
@@ -42,9 +41,6 @@ const environmentFileContent = `
       export const environment = {
         production: ${isProduction},
         ROOT_PATH: '${isProduction ? process.env.ROOT_PATH_PROD : process.env.ROOT_PATH_DEV}',
-
-        // Add more variables here ...
-
       };`;
 
 writeFileUsingFS(targetPath, environmentFileContent); // appending data into the target file
