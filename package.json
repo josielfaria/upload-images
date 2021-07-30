@@ -8,7 +8,7 @@
     "config": "ts-node ./src/environments/setEnvironment.ts",
     "start": "npm run config -- --environment=dev && ng serve --open",
     "build": "npm run config -- --environment=dev && ng build",
-    "build-prod": "npm run config -- --environment=prod && ng build --prod",
+    "build-prod": "npm run config -- --environment=prod && ng build --prod --base-href=/upload-images/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
