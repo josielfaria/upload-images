@@ -1,0 +1,12 @@
+<div class="container text-center">
+  <img [src]="imageUrl" alt="Imagem" class="m-5">
+
+  <div>
+    <mat-label class="name-image">{{ this.fileToUpload ? this.fileToUpload.name : 'Nenhuma selecionada..' }} </mat-label>
+    <input #imageUpload hidden="true" type="file" onclick="this.value=null" (change)="fileChangeEvent($event)" name="Image" accept="image/*" />
+    <button mat-stroked-button color="primary" (click)="imageUpload.click()" class="mr-2 ml-2">
+      <mat-icon>file_upload</mat-icon> Selecionar
+    </button>
+    <button mat-stroked-button color="primary" (click)="save()">Salvar</button>
+  </div>
+</div>
