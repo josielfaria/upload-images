@@ -5,14 +5,14 @@ import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.com
 import { UploadImagePageComponent } from './pages/upload-image-page/upload-image-page.component';
 
 const routes: Routes = [
-  {path: '', component: HomePageComponent},
-  {path: 'home', component: HomePageComponent},
-  {path: 'images', component: UploadImagePageComponent},
-  {path: '**', component: NotFoundPageComponent} // deixar esse sempre por ultimo
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomePageComponent },
+  { path: 'images', component: UploadImagePageComponent },
+  { path: '**', component: NotFoundPageComponent } // deixar esse sempre por ultimo
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
