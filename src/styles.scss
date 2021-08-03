@@ -1,2 +1,6 @@
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+button:hover {
+  transform: scale(1.05);
+}
