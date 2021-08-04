@@ -41,6 +41,8 @@ export const environment = {
   production: ${isProduction},
   apiUrl: '${isProduction ? process.env.ROOT_PATH_PROD : process.env.ROOT_PATH_DEV}',
   apiImgUrl: '${isProduction ? process.env.ROOT_PATH_IMAGES_PROD : process.env.ROOT_PATH_IMAGES_DEV}',
+  userToken: '${process.env.USER_TOKEN}',
+  passToken: '${process.env.PASS_TOKEN}',
 };
 
 `;

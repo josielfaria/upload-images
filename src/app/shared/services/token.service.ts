@@ -14,7 +14,7 @@ export class TokenService {
   getToken = () => localStorage.getItem('access_token');
 
   refreshToken(): void {
-    this.httpClient.post<any>(`${this.api}/auth/refresh`, {}, { headers: this.headersOptions })
+    this.httpClient.post<any>(`${this.api}refresh`, {}, { headers: this.headersOptions() })
       .toPromise().then((info: any) => {
         if (info && info.access_token) {
           localStorage.setItem('access_token', info.access_token);
@@ -22,7 +22,13 @@ export class TokenService {
       }, err => console.error(err, 'LoginService'));
   }
 
-  get headersOptions(): HttpHeaders {
-    return new HttpHeaders({ Authorization: `Bearer ${this.getToken()}` });
+  headersOptions(): HttpHeaders {
+    const headers = new HttpHeaders()
+      .set('Access-Control-Allow-Origin', '*')
+      .set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT')
+      .set('Access-Control-Allow-Headers', '*')
+      .set('Authorization', `bearer ${this.getToken()}`);
+
+    return headers;
   }
 }

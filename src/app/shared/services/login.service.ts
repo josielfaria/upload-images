@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AccessModel } from '../models/access.model';
 import { TokenService } from './token.service';
 
 @Injectable({
@@ -18,27 +19,28 @@ export class LoginService {
     private router: Router,
   ) { }
 
-  loginApi(data: any): void {
-    const accessMock = { email: 'email@com', password: '12345678' }; // TODO: criar model e acesso ao token
-    const formData = new FormData();
-    formData.append('email', accessMock.email);
-    formData.append('password', accessMock.password);
+  loginApi(): Observable<any> {
+    const newAccess = this.infoAccess();
 
-    this.httpClient.post<any>(`${this.api}/auth/login`, formData, { headers: this.tokenService.headersOptions })
-      .toPromise().then((info: any) => {
-        if (info && info.access_token) {
-          localStorage.setItem('access_token', info.access_token);
-          this.router.navigate(['home']);
-          console.log('Login Realizado!');
-        }
-      }, err => console.error(err, 'LoginService'));
+    const params = new HttpParams()
+      .set('email', newAccess.email)
+      .set('password', newAccess.password);
+
+    return this.httpClient.post<any>(`${this.api}login`, params);
   }
 
   verifyUserLogged(): Observable<any> {
-    return this.httpClient.post<any>(`${this.api}/auth/logged`, {}, { headers: this.tokenService.headersOptions });
+    return this.httpClient.post<any>(`${this.api}logged`, {}, { headers: this.tokenService.headersOptions() });
   }
 
   logoutApi(): Observable<any> {
-    return this.httpClient.post<any>(`${this.api}/auth/logout`, {}, { headers: this.tokenService.headersOptions });
+    return this.httpClient.post<any>(`${this.api}logout`, {}, { headers: this.tokenService.headersOptions() });
+  }
+
+  private infoAccess(): AccessModel {
+    const access = new AccessModel();
+    access.email = environment.userToken;
+    access.password = environment.passToken;
+    return access;
   }
 }
