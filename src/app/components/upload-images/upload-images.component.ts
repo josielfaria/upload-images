@@ -3,11 +3,11 @@ import { UploadImageModel } from 'src/app/shared/models/upload-image.model';
 import { ImageUploadService } from 'src/app/shared/services/image-upload.service';
 
 @Component({
-  selector: 'app-upload-image-page',
-  templateUrl: './upload-image-page.component.html',
-  styleUrls: ['./upload-image-page.component.scss']
+  selector: 'app-upload-images',
+  templateUrl: './upload-images.component.html',
+  styleUrls: ['./upload-images.component.scss']
 })
-export class UploadImagePageComponent {
+export class UploadImagesComponent {
 
   fileToUpload: any;
 
