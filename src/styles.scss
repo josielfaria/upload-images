@@ -1,6 +1,21 @@
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 
+html,
+body {
+  height: 100vh;
+  background: linear-gradient(
+    133deg,
+    rgba(243, 246, 200, 1) 12%,
+    rgba(198, 250, 255, 1) 54%,
+    rgba(235, 209, 234, 1) 97%
+  );
+}
+
+mat-card {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23) !important;
+}
+
 button:hover {
   transform: scale(1.05);
 }
