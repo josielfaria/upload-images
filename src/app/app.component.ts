@@ -4,7 +4,7 @@ import { LoginService } from './shared/services/login.service';
 
 @Component({
   selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+  template: '<router-outlet></router-outlet>'
 })
 export class AppComponent implements OnInit {
   title = 'upload-images';
